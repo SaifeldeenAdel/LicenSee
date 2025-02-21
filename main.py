@@ -7,7 +7,7 @@ from util import get_car, read_license_plate, visualize, save_results
 car_model = YOLO("yolo11n.pt")
 license_plate_model = YOLO("license.pt")
 tracker = Sort()
-cap = cv2.VideoCapture("videos/egypt3.mp4")
+cap = cv2.VideoCapture("videos/egypt1.mp4")
 
 results = {}
 frame_count = 0
@@ -16,8 +16,8 @@ vehicles = [2,5,7]
 while True:
   ret, frame = cap.read()
   if ret:
-    frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
-    frame = cv2.resize(frame, (720, 1280))
+    frame = cv2.rotate(frame, cv2.ROTATE_180)
+    frame = cv2.resize(frame, (1280, 720))
     frame_count += 1
     # if frame_count > 60:
     #   break
@@ -60,7 +60,7 @@ while True:
                                               {"bbox": [x1, y1, x2, y2], "text": plate_text, "score": score}}
             
           # Draw the bounding boxes
-          # frame = visualize(frame, (car_x1, car_y1, car_x2, car_y2), (x1, y1, x2, y2), license_crop_thresh)
+          frame = visualize(frame, (car_x1, car_y1, car_x2, car_y2), (x1, y1, x2, y2), license_crop_thresh)
           cv2.imshow("Frame", frame)
           # cv2.waitKey(0)
     else:
@@ -75,9 +75,6 @@ cv2.destroyAllWindows()
 print(results)
 save_results(results, "results.csv")
 
-        # print(plate_text, score)
-        # cv2.imshow("License Plate", license_crop_thresh)
-        # cv2.waitKey(0)
         
 
 

@@ -3,6 +3,7 @@ import cv2
 import csv
 import os
 import re
+from collections import defaultdict
 
 reader = easyocr.Reader(['ar'])
 
@@ -76,39 +77,6 @@ def visualize(frame, car_bbox, plate_bbox, license_crop_thresh):
 
   return frame
 
-
-# def save_results(results, filename):
-#   # Delete results.csv if it already exists
-#   try:
-#     os.remove(filename)
-#   except FileNotFoundError:
-#     pass
-
-#   with open("results.csv", mode="w", newline="",encoding="utf-8-sig") as file:
-#     writer = csv.writer(file)
-
-#     # Write the header row
-#     writer.writerow(["frame_id", "car_id", "car", "plate",
-#                   "plate_text", "score"])
-
-#     # Iterate through results dictionary
-#     for frame_id, frame_data in results.items():
-#         for car_id, car_info in frame_data.items():
-            
-#             car_bbox = car_info["car"]["bounding_box"]
-#             plate_bbox = car_info["license_plate"]["bbox"]
-#             plate_text = car_info["license_plate"]["text"]
-#             score = car_info["license_plate"]["score"]
-
-#             # Write row data
-#             writer.writerow([frame_id, 
-#                             car_id,
-#                             car_bbox, 
-#                             plate_bbox, 
-#                             plate_text, 
-#                             score])
-            
-from collections import defaultdict
 
 def get_best_plate(plate_detections, confidence_threshold=0.4):
     print(plate_detections)

@@ -27,9 +27,10 @@ The basic pipeline involves 4 main processes:
    The plate text is filtered based on a known template for egyptian plates (4 numbers and 3 letters) so we can easily rule out bad detections early. 
 
 
-<div style="width:100px">Detection</div>     |  Results
-:----------------:|:-------------------------:
-| <div style="width:280px">![](img/collage.jpg) </div>  |  ![](img/results.png) |
+### Results
+![alt text](img/collage.jpg)
+
+![alt text](img/results.png)
 
 ## Future Improvements
 

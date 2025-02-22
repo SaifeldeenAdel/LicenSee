@@ -29,7 +29,10 @@ The basic pipeline involves 4 main processes:
 
 ## Running it Locally
 
--   Add your footage to the current directory
+- Clone the SORT module to the current directory
+- Install its `requirements.txt`
+- Install `ultralytics` and `easyocr`
+- Add your footage to the current directory
 -   Edit line 10 in `main.py` with the filename of your footage.
 
 Run the below command and wait for the footage to be processed and view `results.csv` for the results.
